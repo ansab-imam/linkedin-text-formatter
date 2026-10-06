@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn Text Formatter</title>
+  <meta name="description" content="Add bold, italic and bullet formatting to LinkedIn posts, with a live character count and see-more preview.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>LinkedIn Text Formatter</h1>
+    <p>Select some text, pick a style, then copy the post into LinkedIn. Everything runs in your browser.</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel" aria-labelledby="write-heading">
+      <h2 id="write-heading">Write your post</h2>
+      <div class="toolbar" role="toolbar" aria-label="Formatting">
+        <button type="button" class="tool" data-style="bold" title="Bold (Ctrl+B)"><b>B</b> Bold</button>
+        <button type="button" class="tool" data-style="italic" title="Italic (Ctrl+I)"><i>I</i> Italic</button>
+        <button type="button" class="tool" data-style="boldItalic">Bold italic</button>
+        <button type="button" class="tool" data-style="monospace">Mono</button>
+        <button type="button" class="tool" data-style="strike"><s>S</s> Strike</button>
+        <button type="button" class="tool" data-style="plain">Clear</button>
+      </div>
+      <div class="toolbar" role="toolbar" aria-label="Lists">
+        <button type="button" class="tool" data-bullet="•">• Bullets</button>
+        <button type="button" class="tool" data-bullet="✅">✅ Checks</button>
+        <button type="button" class="tool" data-bullet="→">→ Arrows</button>
+        <button type="button" class="tool" data-bullet="number">1. Numbers</button>
+      </div>
+      <label class="field">
+        <span class="sr-only">Post text</span>
+        <textarea id="post" rows="14" spellcheck="true"></textarea>
+        <small>Styles and lists apply to the selected text, or to the whole post if nothing is selected.</small>
+      </label>
+      <div class="actions row">
+        <button type="button" id="copy" class="btn">Copy post</button>
+        <button type="button" id="reset" class="btn btn-ghost">Reset</button>
+        <span id="status" class="muted" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <aside class="panel results" aria-labelledby="stats-heading">
+      <h2 id="stats-heading">Length</h2>
+      <p class="big"><span id="count">0</span> <span class="unit">/ 3,000</span></p>
+      <div class="meter" aria-hidden="true"><div id="meter-bar"></div></div>
+      <dl class="stats">
+        <div><dt>Characters left</dt><dd id="remaining">3,000</dd></div>
+        <div><dt>Words</dt><dd id="words">0</dd></div>
+      </dl>
+      <p id="over" class="error" hidden>Over LinkedIn's 3,000 character limit.</p>
+
+      <h3>Feed preview</h3>
+      <p class="muted">Roughly what shows before "…see more". Make it count.</p>
+      <div id="preview" class="preview"></div>
+    </aside>
+  </main>
+
+  <script src="format.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
